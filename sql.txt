@@ -1,0 +1,4512 @@
+What is Database?
+A database is an organized collection of data,
+ so that it can be easily accessed and managed.
+
+You can organize data into tables, rows, columns, and 
+index it to make it easier to find relevant information.
+
+Database handlers create a database in such a way that only one 
+set of software program provides access of data to all the users.
+
+The main purpose of the database is to operate a large amount of 
+information by storing, retrieving, and managing data.
+
+There are many dynamic websites on the World Wide Web
+nowadays which are handled through databases. 
+
+For example, 
+a model that checks the availability of rooms in a hotel. It is an example of a dynamic website that uses a database.
+
+There are many databases available like MySQL, Sybase, Oracle, MongoDB, Informix, PostgreSQL, SQL Server, etc.
+
+Modern databases are managed by the database management system (DBMS).
+
+
+SQL:
+=====
+
+download oracleXE11gR2 -- Express edition ---oracle.com
+
+
+SQL:
+====
+SQL stands for Structured Query Language. 
+
+It is used for storing and managing data in relational database management system (RDMS).
+
+It is a standard language for Relational Database System. It enables a user to create, 
+read, update and delete relational databases and tables.
+
+All the RDBMS like MySQL, Informix, Oracle, MS Access and SQL Server use SQL as their standard database language.
+SQL allows users to query the database in a number of ways, using English-like statements.
+
+Rules:
+SQL follows the following rules:
+
+Structure query language is not case sensitive. 
+Generally, keywords of SQL are written in uppercase.
+Statements of SQL are dependent on text lines. 
+We can use a single SQL statement on one or multiple text line.
+Using the SQL statements, you can perform most of the actions in a database.
+
+
+sql stands for structure query language designed for
+accessing and managing the data in the RDBMS
+
+Sql act as interface between user and database.
+
+why sql ?
+=========
+
+Sql can retrieve records from the database.
+
+sql can insert record into the database
+
+sql can update record in to a database
+
+sql can provides privileges to pprocedures,functions,
+views, sequences----database objects
+
+
+Sql id divided into five categories:
+====================================
+
+DDl --DATA  DEFINITION LANGUAGE     
+-------------------------------
+CMDS:CREATE,ALTER,TRUNCATE,DROP,RENAME,COMMENT
+
+which deals with database schemas and descriptions, of how the data should reside in the database.
+                            
+DML -- DATA MANIPULATION LANGUAGE
+-----------------------------------
+
+CMDS:INSERT,UPDATE,DELETE,MERGE
+
+which deals with data manipulation and includes most common SQL statements such 
+INSERT, UPDATE, DELETE, etc., and it is used to store, modify, retrieve, delete and update data in a database.
+
+DCL -- DATA CONTROL LANGUAGE
+-----------------------------
+
+GRANT,REVOKE
+
+TCL -- TRANSACTION CONTROL LANGUAGE
+-------------------------------------
+COMMIT,ROLLBACK,SAVEPOINT
+
+DRL -- DATA RETRIVEAL LANGUAGE
+------------------------------
+SELECT
+
+
+USER OR SCHEMA:
+===============
+
+USER IS A SOMEONE WHICH CAN CONNECT THE DATABASE AND
+CREATE THE DATABASE OBJECT.HOWEVER USER CAN HAVE
+PRIVILEGES TO CONNECT DATABASE AND CREATE THE OBJECTS.
+
+BY DEFAULT WHEN INSTALL THE SOFTWARE  THE DBA USER IS
+CREATED (SYSTEM) --- IS DBA
+
+SYSTEM USER:
+============
+
+IN THIS USER OR SHEMA CONTAIN ALL PRE-DEFINED OBJECTS.
+
+ALL OBJECTS STORED IN TABLES CALLED DATA DICITONARY.
+
+
+NOTE:
+=====
+
+IN ORACLE USER OR SCHEMA BOTH ARE SAME.
+
+IN MYSQL USER IS SEPARATE(TO CONNECT) AND 
+SCHEMA(DATABASE) IS SEPARATE
+
+
+TO CREATE A USER IN THE ORACLE:
+==============================
+
+1)CONNECT AS DBA
+
+SYNTAX:
+=======
+
+CONNECT AS SYSTEM/PASSWORD;
+
+OR
+
+CONNECT /as sysdba;
+
+
+2)create a user syntax:
+=======================
+
+syn:
+====
+
+create user <username> identified by <password>;
+
+
+3)Grant the permission to user to connect and create
+   the database objects
+
+syntax:
+=======
+
+grant connect,resource to <username>;
+
+or
+
+grant all privileges to <username>;
+
+
+to list all the users in the database:
+======================================
+
+cmd : select * from dba_users; -- system user
+
+         or
+
+     select * from all_users; --- ibm user
+
+
+TO alter the password of the user:
+===================================
+
+syntax:
+=======
+connect as system dba;
+
+
+alter user <username> identified by <newpassword>;
+
+
+
+TO UNlock the user:
+====================
+
+syntax:
+=======
+
+
+alter user <username>  identified by <password> account unlock;
+
+
+TNS PROTOCOL ADAPTOR ERROR:
+===========================
+
+1)go to run command and type services.msc 
+it will list out all the services running in your system
+
+
+2)search for oracleXE serivce 
+  if service is not started ,we need to start explicitly
+
+
+
+ Oracle Datatypes:
+ =================
+
+ Number[(p,s)]:-  this data is used to store numeric data
+                   maxisize we can store up to 38 digits
+                
+                 p--precision
+                 s--scale
+  ex:
+  ====
+
+  empno number
+ 
+  empno number(5)
+
+  sal  number(10,3); -- 10 is precision and 3 is scale.
+ 
+
+  Example:
+  =======
+   The precision is the number of digits in a number. It ranges from 1 to 38.
+   The scale is the number of digits to the right of the decimal point in a number. 
+    It ranges from -84 to 127.
+   
+   For example, the number 1234.56 has a precision of 6 and a scale of 2.
+   So to store this number, you need NUMBER(6,2).
+
+
+
+
+  char[(size)] :-  this is used to store fixed characters
+                  maximum size is 2000 bytes.
+
+  nchar[(size)] :-  this data type is used to store  
+                 national characters ,maxmimum size is 2000 bytes.
+
+  varchar(size) :- this data type is used to string type of data.
+                  maximum size is 2000 bytes.
+
+  varchar2(size) :-- this datda type is used to store string type of data
+                    maximum size is 4000 bytes.
+
+ Difference varchar(size) and varchar2(size):
+ ============================================
+
+ ex:
+  ===
+
+ ename varchar(10);                 ename varchar2(10);
+ suppose a user
+ enter smith			     suppose user
+ interanlly                             enter  smith
+         
+                                     internally the sql egine 
+ it will allocate                     will allocate the 
+ memory based on                      memory based on user 
+                                     enter value.
+ variable datatype size
+                                       ------
+----------			       smith
+smithnnnnn
+
+
+remaining character will
+be fillup with nullvalues
+at right side
+ 
+
+size if fixed                         size is variable value length
+
+
+
+
+Date:--  
+========
+        this datatype is used to store valid date
+          by default the oracle use the date format
+          DD-MON-YYYY.
+          Date range :- from 1 jan 4712 BC to 31 dec 9999 A.D
+
+ TImestamp:
+ ===========
+ thid datatype is used to store valid date(year,date,month) and time
+ (HH:MM:SS:MS)
+
+
+ AnsI(american national standards institution)
+ ===========================================
+  Int
+ Float
+ Decimal
+ varchar
+....etc
+
+
+ LOB (large binary objects)dataypes:
+ ====================================
+
+  Bfile :- it will stores the locations of file.
+ 
+ BLOB --to store unstructured data -- maximum size is 4gb.
+
+ ClOB -- to store character of binary single character or
+         multiple characters of data ---maximum size is 4gb.
+
+
+ ROWID:
+ ======
+
+ Every record in database contains physical address or rowid
+
+
+ XML:
+ ====
+
+ to store xml data --semi structure data --Introduced in oracle11g 
+
+
+ Note:
+ =====
+ insert the values for varchar,varchar2,date  datatypes
+ in single code('');
+
+
+ DDL:
+ =====
+
+ DDL stands for Data definition language.
+
+ DDL is used to define the definitions or schema or structure and
+ modify the definitions or schema or structure in the database.
+
+ DDl commands are auto commit commands.
+
+
+ DDL commands are
+ -----------------
+ create,alter,rename,truncate,drop
+
+
+ create:
+ =======
+
+ create command is used to define the database objects.
+
+database objects are table,view,sequenc,procedure...etc
+
+
+To create a table syntax:
+========================
+
+syntax:
+=======
+
+
+create table <tablename>(
+               columnam1 datetype(size) [constraints],
+               columname2 datatype(size)[constraints],
+
+                 ---------
+                ----------------------
+		columnamen datatype(size)[constraints]
+             );
+
+
+tablename conventions:
+======================
+
+tablename should be 30 character
+tablename should contain numbers and underscore
+tablename cannot start with number.
+tablename is not case sensitive.
+tablename cannot contain space.
+
+
+
+ex1
+===
+create table emp11 it contains the columns
+
+columns          datatype       length
+empno             number          5
+ename		varchar2           10
+sal              number           10,2
+hiredate            date           default format
+
+
+sol:
+====
+
+create table  emp11(
+                     empno  number(5),
+                     ename  varchar2(10),
+                     sal    number(10,2),
+                    hiredate  date);
+
+
+  
+to list all the table from a user:
+===================================
+
+cmd:  select * from tab;
+
+
+to clear screen:
+=================
+  
+cmd: cl scr
+
+
+to show the current user:
+==========================
+
+cmd: show user;
+
+
+to describe the table structure:
+================================
+
+syntax:
+========
+
+desc[ribe] tablename;
+
+
+
+Insert some records into emp11 table:
+=====================================
+
+
+syntax:
+=========
+
+insert into tablename values(column-value,----columnn-values);
+
+
+sol:
+====
+
+insert into emp11 values(1001,'smith',20000,'10-jul-2018');
+
+insert into emp11 values(1002,'martin',30000,'10-jun-2019');
+
+insert into emp11 values(1003,'chaitnaya',20000,'10-aug-2017');
+
+insert into emp11 values(1004,'raju',10000,'10-feb-2015');
+
+insert into emp11 values(1005,'harsha',40000,'10-jan-2016');
+
+
+
+
+commit; --to store the records permanently in table. 
+
+
+to list all the records from the table:
+=======================================
+
+syntax:
+-======
+
+select * from tablename;
+
+ex:
+===
+
+select * from emp11;
+
+
+
+copy a table with schema with out data from existing table
+==========================================================
+
+syntax:
+========
+
+create table tablename as select * or[specific columns]
+                               from tablename where anyfalse condition;
+
+
+ex2:
+====
+
+create a table emp_without_data (empno,ename,sal) from emp table without data.
+
+solu:
+======
+
+
+create table emp_11 as select empno,ename,sal from emp11 where 1=2;
+
+
+copy a table with schema with data from existing table
+==========================================================
+
+syntax:
+=======
+
+create table tablename as select * or[specific columns]
+                                       from tablename;
+
+
+ex:
+===
+
+create a table emp_with_date (empno,ename,sal) from
+existing table emp11 with data.
+
+
+sol:
+====
+
+create table emp_with_data as select empno,ename,sal from emp11;
+
+
+to clear the screen:
+====================
+
+oracle -- cl scr
+mysql -- clear or  ctrl+L
+IBMDB2 -- !cls
+
+
+Alter:
+=======
+
+alter command is used to modify the definition(structure) of a table.
+
+
+1)to add a new column to an existing table:
+============================================
+
+syntax:
+=======
+
+alter table tablename add columname datatype ;
+
+or
+
+alter table tablename add (column datatype,columname datatype);
+
+note:
+=====
+
+all columns added to table at last.
+
+
+2)modify the column datatype size or change column datatype
+============================================================
+
+note:
+=====
+
+to decrease the size of a column first we need to make
+column as empty.
+
+to change the column datatype then first we need to
+make the column as empty.
+
+
+syntax:
+========
+
+alter table tablename  modify  columnname datatype(size)
+
+ or
+
+alter table tablename modify  (columnname datatype(size),columname datatype(size));
+
+
+3) to drop a column from the table:
+====================================
+
+syntax:
+=======
+
+alter table tablename drop column  columname;
+
+
+4) to rename  a column:
+========================
+
+syntax:
+=========
+
+alter table tablename rename column  colunname to newcolumname;
+
+
+5)to add a constraint for column:
+==================================
+
+syntax
+------
+
+alter table tablename add constraint constraintname;
+
+
+6) to drop a constraint for a column:
+======================================
+
+syntax:
+========
+
+alter table  tablename drop constraint  constraintname;
+
+
+example:
+=========
+
+
+Already we have emp11 table:
+
+
+alter operations on emp11:
+==========================
+
+a) add column mobileno 
+
+sol:
+=====
+alter table emp11 add mobileno number(10);
+
+
+b) add columns address,job
+============================
+sol:
+---------
+
+alter table emp11 add (address varchar2(20),job varchar2(20));
+
+
+
+c)current size of ename is 10 then
+  increase the size of ename column to 20;
+
+sol:
+=====
+
+
+alter table emp11 modify ename varchar2(20);
+
+
+
+d)drop a column  address;
+
+sol:
+====
+
+alter table emp11 drop column address;
+
+
+e)rename a column job  to designation
+==========================================
+
+sol:
+----
+
+alter table emp11 rename column  job to designation;
+
+
+to store all the execution sql statements:
+==========================================
+
+spool [filename|off|append]
+
+ex:
+====
+
+spool c:\create.txt
+
+
+
+to save all the sql statements;
+
+spool off;
+
+
+to append sql statements in the same file :
+========================================
+syntax:
+======
+
+spool c:\create.txt append
+
+
+to save all the sql statements;
+
+spool off;
+
+
+RENAME:
+========
+Rename is  used to rename the table.
+
+syntax:
+=======
+
+rename oldtablename to  newtablename;
+
+ex:
+===
+
+write a query to rename a emp_with_data to employee ?
+ 
+
+truncate:
+=========
+
+this command is used to delete all the records or data
+from the table but not schema. we cannot rollback(truncate is
+auto commit cmd).
+
+syntax:
+=========
+
+truncate table tablename;
+
+ex:
+===
+
+write a query to trunate a table employee ?
+
+sol:
+===
+
+truncate table employee;
+
+
+Drop :
+======
+
+this command is used to drop  the database objects. 
+it will drop data from the table as well as schema.
+
+database objects:- table,view,sequence,procedure..etc
+
+
+to drop a table:
+=================
+
+syntax:
+-------
+
+drop table tablename;
+
+
+note:
+====
+once drop a table , the table will stored in recyclebin.
+
+to restore the table from recycle bin we need to use two commands
+Flashback and purge(Enter prise edition).
+
+
+or
+
+to drop a table which contains constraint:
+==========================================
+
+syntax:
+=======
+
+drop table tablename cascade constraints;
+
+
+DML
+====
+DML stands Data Manipulation language.
+
+Dml commands are not auto commit commands,
+we need to explicitly commit the DML statements.
+
+DMl commands are:
+==================
+insert,update,delete,Merge
+
+
+insert:
+======
+insert command is used to add record into a table.
+
+syntax:
+=======
+insert into tablename values(column value1,col-value2...,colvalue-N);
+
+
+
+insert with address method(&):
+===============================
+insert the records at the runtime .
+
+syntax:
+=======
+
+insert into table values(&columname,'&columnname',....&columname);
+
+ex:
+==
+
+insert into emp_11 values(&empno,'&ename',&sal);
+
+
+note:
+======
+ to insert one more record press / and enter.
+
+
+
+insert  with specific columns:
+================================
+
+it is used to insert the data for specific columns
+
+syntax:
+=======
+
+
+insert into tablename (columnname1,coluname2,---columname3)
+             values(columnvalue1,columnvalue2,---columnname3);
+
+ex:
+====
+
+write a query to insert record for specific columns(empno,ename) into 
+table emp_11;
+
+sol:
+====
+
+insert into emp_11 (empno,ename) values(1005,'dsds');
+
+or
+insert into emp_11 (empno,ename) values(&empno,'&ename');
+
+
+
+insert as select
+=================
+
+syntax:
+========
+
+insert into trg_tablename select columnslist from src_tablename;
+
+note:
+=====
+the trg_tablename columnames and src_tablename columns
+should have the same schema(column data type).
+
+
+update:
+=======
+update is used to modify the column values.
+
+syntax:
+=========
+
+update tablename set columname=value,columnname=value where condition
+
+note:
+=====
+
+if where condition is not specified total records will be
+updated in the table.
+
+ex:
+===
+
+write a query to update a column ename raju to another name
+where empno 1004?
+
+solu:
+=====
+
+update emp_11 set ename='rajuhadoop' where empno=1004;
+
+
+write a query to update a column ename and sal where
+empno 1005?
+
+sol:
+=====
+
+update emp_11 set ename='sdsd',sal=4000 where empno=1005;
+
+
+delete:
+========
+
+this command is used to delete a specific record
+or all the records.
+
+
+syntax:
+=======
+
+
+delete from tablename where condition; --specific record
+
+or
+
+delete from tablename -----all record will be deleted.
+
+or
+
+delete tablename where condition.
+
+
+note:
+=====
+
+once record is deleted we can restore before commit.
+
+
+Merge command:
+===============
+Merge command is 
+ used to conditionally insert and update the table.
+
+merge is used to merge the record from one table to another.
+based on condition if condition is matched it will
+update and if condition is not matched then it will insert into
+target table
+
+merge is also called as upsert.
+
+syntax:
+========
+
+merge into targettable t1
+using sourcetable s1
+on(condition)
+when matched then
+ update set t1.columname=s1.columnvalue,t2.columname=s1.columnname
+when not matched then
+ insert (columname,columname....,columnamen)
+ values(s1.columnamme,s1.columname.....,s1.columnnamen);
+
+
+ALias names:
+=============
+
+alias name is temporary name for column or table.
+
+syntax:
+=======
+
+coluname  as aliasname
+
+or
+
+columname aliasname
+
+columnae "Hire_date"
+
+
+ex:
+====
+
+select empno,ename,sal as salary from emp_11;
+
+
+select e.empno,e.ename,e.sal from emp e;
+
+
+
+merge example:
+===============
+1)create a table trg_emp with three columns empno,ename,sal;
+
+
+create table trg_emp(empno number(4),ename varchar2(10),
+                      sal number(10,2));
+
+
+2)create table src_emp with three columns empno,ename,sal
+
+create table src_emp(empno number(4),ename varchar2(10),
+                      sal number(10,2));
+
+
+
+insert the records into trg_emp:
+==================================
+
+insert into trg_emp values(1001,'raju',3000);
+insert into trg_emp values(1002,'smith',4000);
+
+commit;
+
+
+
+insert the records into src_emp:
+==================================
+
+insert into src_emp values(1001,'rahul',5000);
+insert into src_emp values(1003,'martin',2000);
+
+commit;
+
+
+1)write a query to merge the records from src_emp_005 into 
+trg_emp_005;
+
+sol:
+====
+
+merge into trg_emp t1
+using src_emp s1
+on(t1.empno=s1.empno)
+when matched then
+update set t1.ename=s1.ename,t1.sal=s1.sal
+when not matched then
+insert (t1.empno,t1.ename,t1.sal) values (s1.empno,s1.ename,s1.sal);
+
+
+TCL COMMANDS:
+============
+TCL STANDS FOR TRANSACTION CONTROL LANGUAGE.
+
+TCL COMMANDS ARE USED TO MANAGE THE TRANSACTION IN THE
+DATABASE(INSERT OR UPDATE OR DELETE -- DML)
+
+TCL COMMNADS ARE:
+=================
+
+COMMIT
+ROLLBACK
+SAVEPOINT
+
+
+1)COMMIT:
+=========
+
+COMMIT COMMAND IS USED TO SAVE THE TRANSACTIONS 
+PERMANENTLY IN THE DATABASE.
+
+COMMIT PLAYS VITAL ROLE WHEN WE WORKS ON DML OPERATION BUT
+WE NEED TO EXPLICITY  SAVE THE TRANSACTIONS USING COMMIT.
+
+SYNTAX:
+=======
+
+COMMIT;
+
+
+explicit commit:
+==================
+
+commit;
+
+
+BELOW ARE Implicit commit:
+==========================
+
+1) abnormal termination:
+=========================
+
+when the close the terminal ,the dml operation will not be save.
+
+
+2)auto commit using exit:
+==========================
+
+exit command commits all the dml transactions before
+closing or logout the terminal or console.
+
+3)DDL is auto-commit.
+======================
+
+when dml transactions performed followed by ddl statements
+the abnoraml close the terminal all the transactions
+will be saved in the database object
+
+ex:
+===
+
+insert
+update
+
+create/truncate/rename/alter/drop.
+
+
+ROLLBACK:
+=========
+THIS COMMAND IS USED TO RESTORE OR ROLLBACK ALL THE
+DML TRANSACTION UP TO THE LAST COMMITED STATE.
+
+SYNTAX:
+======
+
+ROLLBACK;
+
+
+
+
+SAVEPOINT:
+==========
+THIS COMMAND IS USED TO SAVE THE TRANSACTIONS TEMPORARILY
+AT PARTICULAR POINT,SO THAT WE CAN RESTORE OR ROLLBACK 
+AT PARTICULAR SAVE POINT  WHENEVER WE REQUIRED.
+
+
+SYNTAX:
+=======
+SAVEPOINT  SAVEPOINTNAME;
+
+
+TO ROLLBACK AT PARTCULAR SAVE POINT:
+=====================================
+
+ROLLBACK TO SAVEPOINTNAME;
+
+EX:
+===
+
+
+SUPPOSE A TABLE EMP_11
+
+1)INSERT
+
+INSERT INTO EMP_11 VALUES(1014,'FOUR',4000);
+
+INSERT INTO EMP_11 VALUES(1015,'FIVE',5000);
+
+
+SAVEPOINT S1;
+
+INSERT INTO EMP_11 VALUES(1016,'SIX',6000);
+
+INSERT INTO EMP_11 VALUES(1017,'SEVEN',7000);
+
+
+SAVEPOINT  S2;
+
+INSERT INTO EMP_11 VALUES(1018,'EIGHT',4000);
+
+INSERT INTO EMP_11 VALUES(1019,'NINE',4000);
+
+
+ROLLBACK TO S2;
+
+
+ROLLBACK TO S1;
+
+
+ROLLBACK;
+
+
+
+SET PAGESIZE:
+===============
+
+TO INCREASE THE DISPLAY OF THE PAGE.
+
+SYNTAX:
+=======
+
+SET PAGESIZE Value;
+
+
+set linesize:
+==============
+to increase the no of lines to display
+
+syntax:
+========
+
+set linesize value;
+
+set num[width]:
+===============
+
+it will decrease the width between the columns
+
+syntax:
+========
+
+set numvalue;
+
+ex:
+====
+set num5;
+
+
+
+
+
+DCL:
+====
+DATA CONTROL LANGUAGE
+
+THIS COMMAND IS USED TO CONTROL THE PRIVILEGES ON THE
+DATABASE OBJECT FOR A USER.
+
+DCL COMMANDS ARE:
+=================
+
+GRANT 
+------
+THIS COMMAND IS USED TO SPECIFY THE PRIVILEGES 
+(INSERT,UPDATE,DELETE,SELECT) ON TABLE OBJECT TO USER.
+
+SYNTAX:
+=======
+
+GRANT PRIVILEGES ON TABLENAME TO USER.
+
+EX:
+===
+LTI1 USER WANT TO ACCES THE TABLE WHICH IS AVAILABLE IN 
+LTI USER,TO ACCESS THE TABLE USER MUST HAVE SELECT PRIVILEGE
+ON THE TABLE.
+
+note:
+=====
+FROM LTI USER MUST GIVE THE PRIVILEGE TO LTI1;
+
+SOL:
+====
+LTI USER:
+==========
+LTI user
+--------
+
+GRANT SELECT ON EMP_11 TO LTI1;
+
+GRANT INSERT ON EMP_11 TO LTI1;
+
+OR
+
+GRANT INSERT,UPDATE,DELETE ON EMP_11 TO LTI1;
+
+OR
+
+GRANT ALL ON EMP_11 TO LTI1;
+
+OR
+
+GRANT SELECT,INSERT ON EMP_11 TO LTI1;
+
+REVOKE
+ 
+LTI1 USER:
+==========
+
+SELECT * FROM LTI.EMP_11;
+
+insert into LTI.emp_11 values(1014,'dsd',4000);
+
+
+REVOKE:
+=======
+
+THIS COMMAND IS USED TO RESTORE OR ROLLBACK ALL
+THE PRIVILEGES FROM THE USER TO WHOM WE ALREADY GRANTED.
+
+SYNTAX:
+=======
+
+REVOKE PRIVILEGE ON TABLE FROM USER;
+
+
+EX:
+====
+
+REVOKE ALL THE PRIVILEGES ON EMP_11 FROM LTI1
+
+SOL:
+====
+
+FROM LTI USER:
+===============
+
+REVOKE SELECT ON EMP_11 FROM LTI1;
+
+OR
+
+REVOKE INSERT,DELETE ON EMP_11 FROM LTI1;
+
+OR
+
+REVOKE ALL ON EMP_11 FROM LTI1;  
+
+
+
+
+DRL:
+=====
+
+DATA RETRIVAL LANGUAGE.
+
+THIS COMMAND IS USED TO DISPLAY THE RECORDS FROM THE TABLE.
+
+COMMAND IS 
+-----------
+
+SELECT
+
+
+SELEC WITH ALL COLUMNS:
+========================
+
+SELECT * FROM EMP_11;
+
+
+SELECT WITH SPECIFIC COLUMNS:
+==============================
+
+SELECT EMPNO,ENAME FROM EMP_11;
+
+
+SELECT WITH WHERE CONDITION:
+=============================
+
+SELECT * FROM EMP_11 WHERE SAL=3000;
+
+
+
+NOTE:
+=====
+
+SQL QUERIES ARE NOT CASE SENSITIVE
+
+BUT THE DATA WHICH WILL STORE INSIDE A TABLE IS
+CASE-SENSITIVE.
+
+
+
+
+ CONSTRAINTS:
+ ============
+ CONSTRAINT IS A RULE OR RESTRICTION WHICH IMPOSED ON COLUMNS
+ OF THE TABLE.
+ 
+ CONSTRAINTS CAN BE APPLIED AT THE TIME OF COLUMN DEFINITION.
+
+ CONSTRAINTS CAN BE APPLIED AFTER THE TABLE DEFINITION
+
+ CONSTRAINSTS CAN BE APPLIED AT THE ALTER .
+
+
+ CONSTRAINTS ARE DIVIDED INTO THREE
+
+ 1)DOMAIN INTEGRITY CONSTRAINTS
+ -------------------------------
+ NOT NULL
+ CHECK
+
+
+ 2)ENTITY INTEGRITY CONSTRAINTS
+ --------------------------------
+
+ UNIQUE
+ PRIMARY KEY
+
+ 3)REFERENTIAL INTEGRITY CONSTRAINTS
+ ------------------------------------
+
+ FOREIGN KEY
+
+
+  1)DOMAIN INTEGRITY CONSTRAINTS:
+  ================================
+
+   NOT NULL :
+    ==========
+
+   NOT NULL CONSTRAINT ARE USED TO AVOID NULL VALUES FOR THE
+   SPECIFIED COLUMNS.
+
+   WE CAN APPLY THESE CONSTRAINT AT COLUMN-LEVEL
+
+
+   CONSTRAINT WITHOUT NAME:
+   ========================
+
+   BY DEFAULT SQL ENGINE GENERATE CONSTRAINT NAME WITH 
+   THE FOLLOWING SYNTAX
+
+   SYS_CON...
+
+
+  EX:
+  ===
+
+  CREATE A TABLE WITH NOT NULL CONSTRAINT WITH OUT NAME FOR EMPNO COLUMN.
+
+  SOL:
+  ====
+
+  CREATE TABLE EMP_1(EMPNO NUMBER NOT NULL,
+                          ENAME VARCHAR2(10),SAL 
+                          NUMBER(10,2));
+ 
+
+
+  TO LIST ALL THE CONSTRAINTS ON THE TABLE:
+  =========================================
+
+  select constraint_name,constraint_type from user_constraints 
+     where table_name='specify the table in capital letters'.
+
+
+  error code:
+  ============
+
+ ora-01400 cannot insert null values
+
+ CONSTAINT WITH NAME:
+ =====================
+ 
+ TO SPECIFY THE CONSTRAINT NAME BASED ON
+ SOME CONSTRAINT NAME FORMAT
+
+  FORMAT:
+ -------
+
+  CONSTRAINT TABLENAME__COLUMNNAME_CONSTRAINTNAME constrainttype
+
+ EX:
+ ===
+
+ CREATE A TABLE  WITH NOT NULL CONSTRAINT WITH NAME ON EMPNO column.
+
+ SOL:
+ ====
+
+         CREATE TABLE EMP_2( 
+         EMPNO NUMBER CONSTRAINT EMP_ENO_NN not null,
+         ENAME VARCHAR2(10) ,
+         SALL NUMBER(10,2)) ;
+
+
+  CHECK CONSTRAINT:
+  =================
+  CHECK CONSTRAINT IS USED TO INSERT THE VALUE FOR
+  A COLUMN BASED ON SPECIFIC CONDITION
+
+  SYNTAX:
+  -------
+
+  CHECK (CONDITION)
+
+  WE CAN APPLY THESE CONSTRAINTS AT THREE LEVELS
+
+  1)COLUMN -LEVEL
+  2)TABLE -LEVEL
+  3)ALTER -LEVEL
+
+  COLUM -LEVEL:
+  ==============
+
+  CHECK CONSTARINT WITH OUT NAME:
+  -------------------------------
+
+ EX:
+ ---
+
+ CREATE A TABLE WITH CHECK CONSTRAINT WITH OUT NAME ON 
+ SAL COLUMN(SAL>1500) .
+
+ SOL:
+ ====
+ CREATE TABLE EMP3(EMPNO NUMBER NOT NULL,
+                  ENAME VARCHAR2(10),
+                 SAL NUMBER(10,2) CHECK(SAL>1500),
+                 address varchar2(20));
+
+
+ error code:
+ ===========
+ 
+ if user try to enter values for sal column less than
+ 1500, it will throw an error
+
+ ora-02290 check constraint violated.
+
+
+ CHECK CONSTRAINT WITH NAME:
+ ===========================
+
+ EX:
+
+ CREATE A TABLE WITH CHECK CONSTRAINT WITH NAME ON 
+ SAL COLUMN(SAL>1500) .
+
+ SOL:
+ =====
+
+ CREATE TABLE EMP4(EMPNO NUMBER
+                  ENAME VARCHAR2(10),
+           SAL NUMBER(10,2) CONSTRAINT EMP4_CH_SAL CHECK(SAL>1500));
+
+
+ error code:
+ ===========
+
+ if user try to enter values for sal column less than
+ 1500, it will throw an error
+
+ ora-02290 check constraint violated.
+
+
+
+ CHECK CONSTRAINT AT TABLE LEVEL:
+ ================================
+
+ DEFINE THE CHECK CONSTRAINT AFTER TABLE COLUMN DEFINITION.
+
+
+ CHECK CONSTRAINT WITH OUT NAME:
+ ==============================
+ EX:
+ ===
+
+ CREATE A TABLE WITH CHECK CONSTAINT WITH OUT NAME
+ ON SAL COLUMN(SAL>1500) AT TABLE LEVEL
+
+ SOL:
+ =====
+ CREATE TABLE EMP5(EMPNO NUMBER(5),
+                  ENAME VARCHAR2(10),
+ 		  SAL NUMBER(10,2),
+                  JOB  VARCHAR2(10),
+                  CHECK(SAL>1500));
+
+
+ error code:
+ ===========
+
+ if user try to enter values for sal column less than
+ 1500, it will throw an error
+
+ ora-02290 check constraint violated.
+
+
+ CHECK CONSTRAINT WITH NAME:
+ ============================
+EX:
+  ===
+
+CREATE A TABLE WITH CHECK CONSTAINT WITH  NAME
+ON SAL COLUMN(SAL>1500) AT TABLE LEVEL
+
+SOL:
+====
+
+CREATE TABLE EMP6(EMPNO NUMBER(5),
+                  ENAME VARCHAR2(10),
+                  SAL NUMBER(10,2),
+                  JOB VARCHAR2(10),
+         CONSTRAINT EMP6_CH_SAL CHECK(SAL>1500));
+
+error code:
+===========
+
+if user try to enter values for sal column less than
+1500, it will throw an error
+
+ora-02290 check constraint violated.
+
+
+  ALTER LEVEL:
+  ============
+ 
+  CHECK CONSTRAINT WITH OUT  NAME:
+ ===============================
+
+  1)ALREADY TABLE EXITST WE NEED APPLY CONSTRAINT FOR SAL COLUMN
+   AT ALTER LEVEL
+  EX:
+  ===
+
+   CREATE TABLE EMP7( EMPNO NUMBER(5),
+                  ENAME VARCAHR2(10),
+                  SAL NUMBER(10,2));
+
+
+  2)SPECIFY THE CHECK CONSTRAINT WITH OUT NAME ON SAL COLUMN
+   FOR EMP7 TABLE AT ALTER LEVEL
+
+  SOL:
+  ====
+
+   ALTER TABLE EMP7 ADD  CHECK(SAL>1500);
+
+
+ 
+  CHECK CONSTRAINT WITH  NAME:
+  ===============================
+
+ 1)ALREADY TABLE EXITST WE NEED APPLY CONSTRAINT FOR SAL COLUMN
+    AT ALTER LEVEL
+
+ EX:
+ ===
+
+ CREATE TABLE EMP8( EMPNO NUMBER(5),
+                  ENAME VARCAHR2(10),
+                  SAL NUMBER(10,2));
+
+ 2)SPECIFY THE CHECK CONSTRAINT WITH  NAME ON SAL COLUMN
+ FOR EMP8 TABLE AT ALTER LEVEL
+
+ SYNTAX:- ALTER TABLE TABLENAME ADD CONSTRAINT CONSTRAINTNAME
+                                                    CONSTRAINTTYPE;
+
+SOL:
+====
+
+ALTER TABLE EMP8 ADD CONSTRAINT EMP8_CH_SAL  CHECK(SAL>1500);
+
+
+ 
+
+ TO DROP A CONSTRAINT ON A COLUMN OF TABLE:
+ ==========================================
+ SYNTAX:
+ =======
+
+ ALTER TABLE TABLENAME DROP CONSTRAINT CONSTRAINTNAME;
+ 
+ EX:
+ ====
+
+ ALTER TABLE EMP_1 DROP CONSTRAINT SYS_CN007171;
+
+ OR
+
+ ALTER TABLE EMP_1 DROP CONSTRAINT EMP2_NN_ENO;
+
+
+ ENTITY INTEGRITY CONSTRAINTS:
+ =============================
+
+ UNIQUE
+ PRIMARY KEY
+
+ UNIQUE
+ ======
+ UNIQUE CONSTRAINT ARE USED TO AVOID DUPLICATE VALUES FOR 
+ SPECIFIED COLUMNS BUT IT WILL ALLOW NULL VALUE.
+
+ ONCE UNIQUE CONSTRAINT IS CREATED ON COLUMN 
+ INTERNALLY UNIQUE INDEX WILL BE CREATED ON THAT COLUMN.
+
+ UNIQUE CONSTRAINT CAN BE CREATE ON ONE COLUMN OR MORE THAN
+ ONE COLUMN 
+
+ syntax:
+ =======
+
+ unique(column);
+
+
+ WE CAN APPLY THIS CONSTRAINT AT THREE LEVELS
+ 
+ 1)COLUMN -LEVEL
+ 2)TABLE -LEVEL
+ 3)ALTER -LEVEL
+
+ COLUMN -LEVEL:
+ ===============
+
+ UNIQUE CONSTRAINT WITH OUT NAME:
+ =================================
+
+ EX:
+ ===
+
+ CREATE A TABLE WITH unique constraint with out name on empno column to 
+ avoid duplicates 
+
+ sol:
+ ====
+
+        create table emp22(empno number(4) unique,
+                   ename varchar2(10),
+                   sal number(10,2));
+
+
+  Error code:
+  ===========
+
+if user try to enter duplicate values for empno column then below error
+
+ORA-00001: unique constraint (IBM.SYS_C007181) violated
+
+
+ UNIQUE CONSTRAINT WITH NAME:
+ ============================
+
+ EX:
+ ===
+
+ CREATE A TABLE WITH unique constraint with name on empno column to 
+ avoid duplicates .
+
+ sol:
+ ====
+
+ create table emp33(empno number constraint emp_uq_eno unique,
+                   ename varchar2(10),
+                   sal number(10,2));
+
+
+ NOTE:
+ =====
+ CONSTRAINT_TYPE IS : U
+
+Error code:
+===========
+
+if user try to enter duplicate values for empno column then below error
+
+ORA-00001: unique constraint (IBM.SYS_C007181) violated
+
+
+
+ UNIQUE AT TABLE LEVEL:
+ ======================
+ UNIQUE CONSTRAINT WITHOUT NAME
+ ===============================
+ SYNTAX: --UNIQUE(COLUMN)
+ EX:
+ ===
+
+ CREATE A TABLE WITH unique constraint withOUT name on empno column to 
+ avoid duplicates AT TABLE LEVEL.
+
+ SOL:
+ =====
+
+ CREATE TABLE EMP44 (EMPNO NUMBER(5),
+                    ENAME VARCHAR2(10),
+                    SAL NUMBER(10,2),
+                    UNIQUE(EMPNO));
+
+
+ UNIQUE CONSTRAINT WITH NAME
+ ===============================
+ SYNTAX: --CONSTRAINT CONSTRAINTNAME UNIQUE(COLUMN)
+ EX:
+ ===
+
+ CREATE A TABLE WITH unique constraint with name on empno column to 
+ avoid duplicates AT TABLE LEVEL.
+
+ SOL:
+ =====
+
+ CREATE TABLE EMP55 (EMPNO NUMBER(5),
+                   ENAME VARCHAR2(10),
+                    SAL NUMBER(10,2),
+            CONSTRAINT  EMP_UQ_ENO  UNIQUE(EMPNO));
+ 
+
+
+
+
+                    
+Error code: 
+===========
+
+if user try to enter duplicate values for empno column then below error
+
+ORA-00001: unique constraint (IBM.SYS_C007181) violated
+
+
+
+ ALTER LEVEL:
+ =============
+ UNIQUE CONSTRAINT WITH OUT NAME:
+ ===================================
+
+  SYNTAX :- ALTER TABLE TABLENAME ADD UNIQUE(COLUMNNAME);
+ 
+
+ EX:
+ ====
+ 1) FIRST CREATE TABLE WHICH CONTAIN THREE COLUMNS .
+
+ SOL:
+ ====
+
+  CREATE TABLE STUDENT(SID NUMBER(5),SNAME VARCHAR2(10),
+                           ADDRESS VARCHAR2(20));
+
+  2) APPLY THE UNIQUE CONSTRAINT FOR SID COLUMN AT ALTER LEVEL.
+
+  SOL:
+  =====
+
+  ALTER TABLE STUDENT ADD UNIQUE(SID);
+
+
+
+ UNIQUE CONSTRAINT WITH NAME:
+ ============================
+
+ SYNTAX :- ALTER TABLE TABLENAME ADD CONSTRAINT CONSTRAINTNAME
+                                                    UNIQUE(COLUMNNAME);
+
+ EX:
+ ===
+
+ CREATE A TABLE EMP_22 WITH THREE COLUMNS EMPNO,ENAME,SAL
+ AND SPECIFY UNIQUE CONSTRAINT WITH NAME FOR EMPNO COLUMN
+ AT ALTER LEVEL
+
+SOL:
+=====
+
+CREATE TABLE EMP_22(EMPNO NUMBER(5),
+                    ENAME VARCHAR2(10),
+                    SAL NUMBER(10,2));
+
+ALTER:
+======
+
+ALTER TABLE EMP_22 ADD CONSTRAINT EMP_UQ_ENO UNIQUE(EMPNO);
+
+Error code: 
+===========
+
+if user try to enter duplicate values for empno column then below error
+
+ORA-00001: unique constraint (IBM.SYS_C007181) violated
+
+
+ PRIMARY KEY:
+ ============
+
+ PRIMARY KEY IS USED TO RETRIVE THE RECORDS UNIQUELY.
+
+ PRIMARY IS COMBINATION OF NOT NULL + UNIQUE
+
+ A TABLE MUST HAVE ONLY ONE PRIMARY KEY.
+
+ PRIMARY IS USED TO AVOID DUPLICATES AND NULL VALUES FOR 
+ SPECIFIED COLUMN.
+
+ NOTE:
+ ======
+
+  A PRIMARY KEY CONTAIN MORE THANN ONE COLUMNS
+  IS CALLED AS COMPOSITE PRIMARY KEY.
+
+   WE CAN ALLOW MULTIPLE COLUMNS UP TO 32 .
+
+   PRIMARY KEY(COLUMN1,.....,COLUMN32)
+
+
+ WE CAN APPLY PRIMARY KEY CONSTRAINT AT THREE LEVELS:
+ ====================================================
+
+ 1)COLUM-LEVEL
+ 2) TABLE -LEVEL
+ 3)ALTER -LEVEL
+
+ COLUMN LEVEL:
+ =============
+
+ CONSTRAINT WITH OUT NAME
+ ------------------------
+ EX: CREATE A TABLE WITH PRIMARY KEY WITH OUT NAME ON EMPNO COLUMN.
+
+  ====
+
+  CREATE TABLE EMP_65(EMPNO NUMBER PRIMARY KEY,
+                       ENAME VARCHAR2(10),
+                        SAL NUMBER(10,2));
+
+
+
+
+
+ ERROR CODE:
+ ===========
+
+ FOR DUPLICATE VALUES:
+ ---------------------
+
+ ERROR at line 1:
+ ORA-00001: unique constraint (IBM.SYS_C007183) violated
+
+ FOR NULL VALUES:
+ =================
+ ERROR at line 1:
+ ORA-01400: cannot insert NULL into ("IBM"."EMP_PK_11"."EMPNO")
+
+
+ PRIMARY KEY WITHNAME:
+ ======================
+
+ EX: CREATE A TABLE WITH PRIMARY KEY WITH  NAME ON EMPNO COLUMN.
+
+ ====
+
+ CREATE TABLE EMP_PK_12(
+
+          EMPNO NUMBER CONSTRAINT   PRIMARY KEY,
+                       ENAME VARCHAR2(10),
+                        SAL NUMBER(10,2));
+
+
+FOR DUPLICATE VALUES:
+---------------------
+
+ERROR at line 1:
+ORA-00001: unique constraint (IBM.SYS_C007183) violated
+
+FOR NULL VALUES:
+=================
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("IBM"."EMP_PK_11"."EMPNO")
+
+
+  TABLE LEVEL:
+  -------------
+
+  PRIMARY KEY CONSTRAINT WITH OUT NAME
+  -------------------------------------
+ SYNTAX:-- PRIMARY KEY(COLUMNNAME)
+ EX:
+ 
+ CREATE A TABLE WITH PRIMARY KEY WITH OUT CONSTRAINT NAME ON
+ EMPNO COLUMN AT TABLE LEVEL
+
+ SOL:
+ ====
+
+
+ CREATE TABLE EMP_PK_13 (EMPNO NUMBER(5),
+                        ENAME VARCHAR2(10),
+                        SAL NUMBER(10,2),
+                       PRIMARY KEY(EMPNO));
+
+ 
+
+
+
+
+
+  PRIMARY KEY CONSTRAINT WITH  NAME
+ -------------------------------------
+  SYNTAX:-- CONSTRAINT CONSTRAINTNAME PRIMARY KEY(COLUMNNAME) 
+
+
+EX:
+
+ CREATE A TABLE WITH PRIMARY KEY WITH  CONSTRAINT NAME ON
+ EMPNO COLUMN AT TABLE LEVEL
+
+ SOL:
+ ====
+CREATE TABLE EMP_PK_14 (EMPNO NUMBER(5),
+                        ENAME VARCHAR2(10),
+                        SAL NUMBER(10,2),
+          CONSTRAINT  EMP_PK_ENO PRIMARY KEY(EMPNO));
+
+
+FOR DUPLICATE VALUES:
+---------------------
+
+ERROR at line 1:
+ORA-00001: unique constraint (IBM.SYS_C007183) violated
+
+FOR NULL VALUES:
+=================
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("IBM"."EMP_PK_11"."EMPNO")
+
+
+
+ ALTER LEVEL:
+ =============
+
+ PRIMARY KEY CONSTRAINT WITH OUT NAME
+ --------------------------------------
+
+ SYNTAX : ALTER TABLE TABLENAME ADD PRIMARY KEY(COLUMNAME);
+
+
+ EX:
+ ====
+
+ 1) CREATE TABLE EMP_15(EMPNO NUMBER(5),
+                           ENAME VARCHAR2(10),
+                           SAL NUMBER(10,2));
+
+  2)ALREADY TABLE EXISTS WE NEED TO ADD PRIMARY KEY ON EMPNO COLUMN.
+
+ SOL:
+ ====
+
+  ALTER TABLE EMP_15 ADD PRIMARY KEY(EMPNO);
+
+
+
+  PRIMARY KEY CONSTRAINT WITH  NAME
+  --------------------------------------
+
+  SYNTAX : ALTER TABLE TABLENAME ADD  CONSTRAINT CONSTRAINTNAME
+                                      PRIMARY KEY(COLUMNAME);
+
+  EX:
+  ===
+
+ 1) CREATE  TABLE EMP_16(EMPNO NUMBER(5),
+                           ENAME VARCHAR2(10),
+                           SAL NUMBER(10,2));
+
+ 2)ALREADY TABLE EXISTS ABOVE WE NEED TO ADD PRIMARY KEY ON EMPNO COLUMN.
+
+
+ SOL:
+ ===
+
+ ALTER TABLE EMP_16 ADD CONSTRAINT EMP_PK_ENO PRIMARY KEY(EMPNO);
+
+
+
+ FOR DUPLICATE VALUES:
+ ---------------------
+
+ ERROR at line 1:
+ ORA-00001: unique constraint (IBM.EMP_Pk_16) violated
+
+ FOR NULL VALUES:
+=================
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("IBM"."EMP_PK_16"."EMPNO")
+
+
+
+ REFERENTIAL INTEGRITY:
+ ======================
+
+ FOREIGN KEY
+ ------------
+
+ FOREIGN KEY IS USED TO REFER THE PRIMARY KEY COLUMN IN PARENT TABLE.
+
+ TO SPECIFY  PARENT AND CHILD RELATION BETWEEN THE TABLES
+ WE NEED FOREIGN KEY.
+
+ TO CREATE A FOREIGN KEY WE NEED TO USE A KEYWORD REFERENCES.
+
+ WE CAN APPLY FOREIGN KEY IN THREEL LEVELS
+ 1)COLUMN -LEVEL
+ 2)TABLE-LEVEL
+ 3)ALTER -LEVEL
+
+
+ COLUMN LEVEL:
+ =============
+
+ FOREIGNN KEY  CONSTRAINT WITH OUT NAME:
+ ---------------------------------------
+ EX:
+ ===
+
+ PARENT TABLE
+ -------------
+
+
+ 1) CREATE A PARENT TABLE DEPT_1 IT CONTAINS THREE COLUMNS
+      DEPTNO,DNAME,LOC WITH PRIMARY KEY FOR DEPTNO COLUMN.
+
+ SOL:
+  ====
+  CREATE TABLE DEPT_1 (DEPTNO NUMBER(3) PRIMARY KEY,
+                        DNAME VARCHAR2(10),
+                         LOCATION VARCHAR2(10));
+
+  CHILD TABLE
+ ------------
+
+ 2)CREATE A CHILD TABLE EMP_Fk IT CONTAINS FOUR COLUMNS
+   EMPNO,ENAME,SAL AND DEPTNO, 
+   CREATE A RELATION BETWEEN
+   DEPT_1 AND EMP_Fk  USING FOREIGN KEY AT COLUMN LEVEL
+
+
+ SOL:
+ ====
+
+ CREATE TABLE EMP_FK(EMPNO NUMBER(5) PRIMARY KEY,
+                      ENAME VARCHAR2(10),
+                      SAL NUMBER(10,2),
+                   deptno number(3) REFERENCES DEPT_1(DEPTNO));
+
+
+
+
+note:
+-----
+INSERT THE RECORD TO PARENT TABLE FIRST THEN
+INSERT THE RECORD TO CHILD TABLE BASED ON PARENT RECORD(depto) EXIST.
+
+
+constraintname constraint_type     
+T
+not null 	c
+check            c
+
+unique           u
+
+primary key     P
+
+foreign key     R
+
+
+
+FOREIGN KEY CONSTRAINT WITH NAME:
+=================================
+
+SYNTAX:
+=======
+
+CREATE TABLE TABLENAME(COLUMNNAME DATATYPE,
+                       COLUMNNAME DATATYPE,
+                       COLUMNNAME DATATYPE,
+   COLUMN DATATYPE  CONSTRAINT CONSTRAINTNAME 
+              REFERENCES PARENTABLENAME(PK_COLUNMNNAME));
+
+
+
+ TABLE LEVEL:
+ =============
+
+ FOREIGN KEY CONSTRAINT WITH OUTTNAME:
+ =================================
+
+ SYNTAX:
+ =======
+
+   CREATE TABLE TABLENAME(
+                       COLUMNNAME DATATYPE,
+                       COLUMNNAME DATATYPE,
+                       COLUMNNAME DATATYPE,
+            FOREIGN KEY(COLUMNAME) REFERENCES PARENTTABLE(PK_COLUMN));
+
+
+  1) create table course(cid -PK,cname,fee)  -->parent table
+      
+     create table course(cid number(4) primary key,
+			 cname varchar2(10),
+			 fee number(5))
+ 				
+      
+
+  2) create table student(sid pk,sname,address,cid-fk):
+
+     
+     create table student_1(sid  number(5) primary key,
+                            sname varchar2(10),
+			    address varchar2(10),
+			    cid  number(4),
+        foreign key(cid) References course(cid));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ FOREIGN KEY CONSTRAINT WITH TNAME:
+ ==================================
+
+ SYNTAX:
+ =======
+
+ CREATE TABLE TABLENAME(
+                       COLUMNNAME DATATYPE,
+                       COLUMNNAME DATATYPE,
+                       COLUMNNAME DATATYPE,
+   CONSTRAINT EMP_FK_DNO FOREIGN KEY(COLUMNAME) REFERENCES 
+                                             PARENTTABLE(PK_COLUMN));
+
+
+ ALTER LEVEL:
+ ============
+
+ FOREIGN KEY WITH OUT NAME:
+ ----------------------------
+
+ SYNTAX:
+ --------
+
+  ALTER TABLE TABLENAME ADD FOREIGN KEY(COLUMNAME) REFERENCES
+                              PARENTTABLE(PK_COLUMN);
+
+
+ FOREIGN KEY WITH  NAME:
+  ----------------------------
+
+ SYNTAX:
+ --------
+
+  ALTER TABLE TABLENAME ADD CONSTRAINT EMP_FK_DNO
+  FOREIGN KEY(COLUMNAME) REFERENCES PARENTTABLE(PK_COLUMN);
+
+
+  EX:
+  ===
+
+  PARENT TABLE:
+  =============
+ 
+   CREATE A TABLE DEPT_1 WITH THREE COLUMNS
+   DEPTNO --PK(COLUM-LLEVEL) ,DNAME,LOC
+
+
+   CHILD TABLE:
+    =============
+
+    CREATE A TABLE EMP_DEPT WITH COLUMNS
+
+    EMPNO -PK(COLUMN-LEVEL),ENAME,SAL,DEPTNO --FK
+
+    NOTE:
+   =====
+
+   ADD FOREIGN KEY AT alter level WITH OUT NAME.
+
+
+    SOL:
+   ====
+
+         CREATE TABLE DEPT_2(DEPTNO NUMBER(3) PRIMARY KEY,
+                    DNAME VARCHAR2(20),
+                    LOC VARCHAR2(10));
+
+        CHILD TABLE:
+        ------------
+
+        CREATE TABLE EMP_dept(EMPNO NUMBER(5) PRIMARY KEY,
+                      ENAME VARCHAR2(10),
+                      SAL NUMBER(10,2),
+                       DEPTNO NUMBER(3))
+
+
+         foreign key at alter level:
+          ============================
+             alter table emp_dept add foreign key(deptno) references dept_1(deptno);
+
+
+
+ ON DELETE CASCADE:
+ ==================
+ IF TRY TO DELETE A RECORD FROM PARENT TABLE IF
+ THEIR EXISTS DEPENDENT RECORD (CHILD RECORD),WE WILL GET
+ ERROR
+
+ ORA-02292: integrity constraint (IBM.SYS_C007189) violated - child record found
+
+
+ TO RESOLVE THIS ERROR
+ ----------------------
+
+ WE NEED TO CREATE A CHILD TABLE WITH FOREIGN KEY FOLLOWED BY
+ ON DELETE CASCADE CONSTRAINT.
+
+
+WE CAN APPLY THIS CONSTRAINT AT THREE LEVELS
+
+1)COLUM-LEVEL
+2)TABLE-LEVEL
+---------------------
+
+CREATE TABLE TABLENAME(
+
+
+                               ,
+      FOREIGN KEY(COLUMNAME) REFERENCES PARENTTABLE(PK_DEPTNO)
+      ON DELETE CASCADE);
+
+
+
+
+
+3)ALTER -LEVEL
+----------------------
+ALTER TABLE TABLENAME ADD FOREIGN KEY(COLUMNAME) REFERENCES
+                  PARENTTABLE(PK_COLUMN) ON DELETE CASCADE;
+
+
+OR
+
+
+ALTER TABLE TABLENAME ADD CONSTRAINT CONSTRAINTNAME
+FOREIGN KEY(COLUMNAME) REFERENCES
+                  PARENTTABLE(PK_COLUMN) ON DELETE CASCADE;
+
+
+
+TABLE-LEVEL:
+=============
+
+PARENT TABLE:
+=============
+
+CREATE A TABLE DEPT_2 WITH THREE COLUMNS
+DEPTNO --PK(COLUM-LLEVEL) ,DNAME,LOC
+
+
+CHILD TABLE:
+=============
+
+CREATE A TABLE EMP_DEPT_2 WITH COLUMNS
+
+EMPNO -PK(COLUMN-LEVEL),ENAME,SAL,DEPTNO --FK
+
+NOTE:
+=====
+
+ADD FOREIGN KEY,ON DELETE CASCADE AT TABLE LEVEL WITH OUT NAME.
+
+
+ ON DELETE CASCADE:
+ ==================
+ IF TRY TO DELETE A RECORD FROM PARENT TABLE IF
+ THEIR EXISTS DEPENDENT RECORD (CHILD RECORD),WE WILL GET
+ ERROR
+
+ ORA-02292: integrity constraint (LTI.SYS_C007189) violated - child record found
+
+
+ TO RESOLVE THIS ERROR
+ ----------------------
+
+ WE NEED TO CREATE A CHILD TABLE WITH FOREIGN KEY FOLLOWED BY
+ ON DELETE CASCADE CONSTRAINT.
+
+
+ Ex:
+  ====
+
+ CREATE TABLE DEPT_CD(DEPTNO NUMBER(3) PRIMARY KEY,
+                     DNAME VARCHAR2(10),
+                     LOC VARCHAR2(10));
+
+
+ CHILD TABLE WITH ON DELETE CASCADE:
+ ===================================
+
+ CREATE TABLE EMP_CD(EMPNO NUMBER(5) primary key,
+                        ENAME VARCHAR2(10),
+                        SAL NUMBER(10),
+                        DEPTNO NUMBER(3),
+     FOREIGN KEY(DEPTNO) REFERENCES DEPT_CD(DEPTNO) 
+     ON DELETE CASCADE);
+
+
+ NOTE:
+ =====
+ IF PARENT RECORD IS DELETED, THEN THEIR CHILD RECORDS
+ WILL ALSO DELETED USING ON  DELETE CASCADE.
+
+
+
+
+
+
+ RELATIONAL OPERATORS:
+ =====================
+
+  > -- GREATER THAN
+  <  --- LESS THAN
+  <= ---LESS THAN OR EQUAL TO
+  >= --- GREATER THAN OR EQUAL TO
+  == --- EQUAL TO
+  != OR <>  -- NOT EQUAL TO
+
+  BETWEEN -- RETURNS THE VALUE ,THE VALUE SPECIFIED IN THE RANGE.
+            (INCLUSIVE)
+
+  IN --- RETURNS THE VALUE ,THE VALUE AVAILABLE IN THE
+                          GIVEN LIST OF VALUES.
+
+ 
+ EXAMPLES:
+ =========
+
+  1)WRITE  A QUERY TO DISPLAY THE RECORDS WHERE SAL LESS THAN 2000
+  FROM EMP TABLE.
+ 
+ SOL:
+ ====
+
+  SELECT * FORM EMP WHERE SAL<2000;
+
+  O/P:- 8 RECORDS.
+
+
+ 2)WRITE A QUERY TO DISPLAY RECORD WITH SPECIFIED RANGE
+  SAL 2000 AND 3000;
+
+ SOL:
+ ====
+
+ SELECT * FROM EMP WHERE SAL>=2000 AND SAL<=3000; 
+
+ OR
+
+ SELECT * FROM EMP WHERE SAL BETWEEN 2000 AND 3000; 
+
+ OLP:-5 RECORDS
+
+
+ 3)WRITE A QUERY TO DISPLAY THE RECORDS BASED ON IN WHERE
+ SAL 1000,2000,3000 ON EMP TABLE.
+
+ SOL:
+ ====
+
+ SELECT * FROM EMP WHERE SAL=1000 OR SAL= 2000 OR SAL=3000;
+ OR
+ SELECT * FROM EMP WHERE SAL IN(1000,2000,3000);
+
+
+
+
+ ORDER BY CLAUSE:
+ ================
+ THIS CLAUSE IS USED TO SORT THE OUTPUT STATEMENT BASED ON SELECT
+ QUERY.
+
+ BY DEFAULT IT SORT ASCENDING OR ASC
+
+ DESCENDING  
+ -----------
+
+ DESC
+
+ SYNTAX:
+ ========
+ SELECT * FROM TABLENAME [WHERE] [ORDER BY COLUMNANME...];
+
+
+ EX:
+ ===
+
+  WRITE A QUERY TO DISPLAY THE RECORD FROMM EMP BASED ON
+  SAL COLUMN IN ASCENDING.
+
+  SOL:
+  =====
+  SELECT * FROM EMP ORDER BY SAL ;
+
+  OR
+
+  SELECT * FROM EMP ORDER BY SAL DESC; --DESCENDING ORDER
+
+
+
+
+  GROUPED FUNCTIONS OR AGGREGATE FUNCTION OR SINGLE ROW FUNCTIONS:
+  =================================================================
+
+  SUM 
+  AVG
+  MIN
+  MAX
+  COUNT
+ 
+  DISTINCT -- TO REMOVE DUPLICATE VALUES
+
+  EX:
+  ===
+
+  1)WRITE A QUERY TO COUNT NO OF RECORDS IN EMP TABLE.
+
+  SOL:
+  ====
+
+   SELECT COUNT(*) FROM EMP;
+
+  2)WRITE A QUERY TO FIND MAX SAL FROM EMP.
+ 
+  SOL:
+  ====
+
+  SELECT MAX(SAL) FROM EMP;
+
+
+ 3) WRITE A QUERY TO FIND SECOND MAX SAL.
+   WE CAN WRITE THIS QUERY USING DENSE RANK OR SUBQUERY.
+
+
+ 4) WRITE A  QUERY TO PEFROM SUM OF SAL  OF ALL EMPLOYESS  IN EMP TABLE.
+ 
+SOL:
+====
+SELECT SUM(SAL) FROM EMP;
+
+O/P: 30325
+
+ 5)select Distinct(sal) from emp;
+
+
+ GROUP BY CLAUSE:
+ ================
+ THIS CLAUSE IS USED TO GROUP OF RELATED INFORMATION.
+
+
+ SYNTAX:
+ =======
+
+  SELECT * FROM TABLNAME [WHERE][GROUP BY COLUMNNAME][ORDER BY COLUMNS];
+
+ EX
+ ===
+ WRITE A QUERY TO PERFORM SUM OF SALARIES BASED ON EACH
+ DEPARTMENT NO FROM EMP TABLE.
+
+ SOL:
+ ====
+
+  SELECT DEPTNO,SUM(SAL) FROM EMP GROUP BY DEPTNO;
+
+
+  2) WRITE A QUERY TO PERFROM SUM OF SALARIES BASED ON EACH
+  DEPARMTENT NO AND COUNT NO EMPLOYESS IN EACH DEPT FROM EMP.
+
+SOL:
+====
+
+   SELECT DEPTNO,COUNT(*),SUM(SAL) FROM EMP GROUP BY DEPTNO;
+
+
+  3)WRITE A QUERY TO PEFROM SUM OF SALARIES BASED ON
+   EACH DEPTNO AND EACH JOB .
+
+  SOL:
+  ====
+
+  SELECT DEPTNO,JOB,SUM(SAL) FROM EMP GROUP BY DEPTNO,JOB;
+
+  
+  3)Having clause:
+  ================
+ to filter the grouped the data the we need to go for having clause;
+  
+  syntax:
+  -------
+   select * from tablename [where][group by][having][order by]
+
+   Ex;
+   ===
+   Write a query to sum(sal) of each dept greater 8750?
+
+   sol:
+
+   select Dept,sum(sal) from emp group by deptno having sum(sal)>8750  order by deptno
+
+  
+   
+   LIKE OPERATOR:
+ ==============
+
+  IT WILL RETRUN THE VALUE BASED ON SEARCH OF PATTERN
+
+  THERE ARE TWO PATTERNS
+
+  %   ->PERCENATAGE-- REPRESENT ONE OR MORE CHARACTERS
+  _   ->UNDERSCORE -- REPRESENT SINGLE CHARACTER
+
+
+  SYNTAX:
+  =======
+
+  LIKE 'PATTERN'
+
+ EX:
+ ===
+
+  WRITE A QUERY TO DISPALY ALL ENAMES FROM EMP
+  WHERE ENAME START WITH S.
+
+
+ SOL:
+ ====
+
+  SELECT ENAME FROM EMP WHERE ENAME LIKE 'S%';
+
+
+
+
+  ex:
+  ===
+  write a query to display all enames start with
+
+  sol:
+  =====
+
+  select ename from emp where ename like 'A_L%';
+
+
+
+
+
+  JOINS:
+  ======
+   Join are used to retrieve the records from multiple tables .
+
+   join are used to create temporary a relation between the tables
+   based on common column.
+
+   if suppose we have n -tables ,then the atleast the possible
+   join conditions are n-1.
+
+   join are performed based on a common column datatype.
+
+
+  There are two types of joins
+
+ 
+  Equi-joins
+ ----------
+ inner join or simple join or equi join
+  
+ outer join--left [outer] join,right [outer] join,full[outer]join.
+ self join --
+
+
+  Non-Equi-joins
+  cross join
+  natural join
+
+
+
+ equi-joins:
+ ============
+
+  this joins performed based on equal operator (=).
+
+
+ inner join:
+ ============
+
+  this join return or fetch all records based on condition matched.
+
+ syntax:
+ =======
+ 
+ select * [specific columns] from table1 join table2
+  on (table1.commoncolumname=table2.commoncolumnname).
+
+ 
+  EX:
+  ===
+
+  write a inner join query to get empno,ename,sal,deptno from emp and
+ deptno,dname from dept using alias name.
+
+ sol:
+ ====
+  select e.deptno,e.empno,e.ename,e.sal,d.deptno,d.dname from 
+  dept d join emp e  on (d.deptno=e.deptno);
+
+
+  o/p:- 14 records using dept,emp table
+
+
+
+
+ EX:2:
+ =====
+
+ write a inner or equijoin query to get empno,ename,sal from emp and
+ deptno,dname from dept using alias name and display where deptno 20
+
+ sol:
+------
+ select e.empno,e.ename,e.sal,d.deptno,d.dname from 
+ dept d join emp e  on (d.deptno=e.deptno) where d.deptno=20
+
+
+
+
+
+
+
+ OUTER JOIN:
+ ===========
+
+ LEFT OUTER JOIN:
+ ================
+
+ THIS JOINS RETRIVES OR FETCH ALL THE MATCHED RECORDS FROM BOTH TABLES
+ AND NON-MATCHED  RECORDS FROM LEFT HAND SIDE TABLE IN JOIN.
+ 
+ SYNTAX:
+ ========
+
+ SELECT * [SPECIFIC COLUMNS] FROM TABLE1 LEFT [OUTER] JOIN TABLE2
+ ON (TABLE1.COMMNCOLUMNAME=TABLE2.COMMONCOLUMNNAME);
+
+ NOTE:
+ =====
+
+ TABLE1 IS A LEFT TABLE.
+
+
+ EX:
+ ====
+ WRITE A QUERY TO GET EMPNO,ENAME,SAL FROM EMP
+ AND DEPTNO,DNAME FROM DEPT AND DISPLAY MATCHED REOCRDS FROM TWO TABLES
+ AND NON MATCHED RECORDS FROM DEPT TABLE.
+
+SOL:
+===
+	SELECT E.EMPNO,E.ENAME,E.SAL,D.DEPTNO,D.DNAME
+	FROM DEPT D LEFT OUTER JOIN EMP E ON (D.DEPTNO=E.DEPTNO);
+
+     O/P:- 14 MATCHED REOCRDS FROM DEPT,EMP TABLE  AND 2
+          NON-MATCHED RECORD FROM DEPT TABLE.
+
+
+
+
+
+ RIGHT OUTER JOIN:
+ =================
+
+ THIS JOIN RETRIVES OR FETCH ALL THE MATCHED RECORDS FROM BOTH THE
+ TABLES AND NON- MATCHED RECORDS FROM RIGHT HAND SIDE TABLE IN JOIN.
+
+ SYNTAX:
+ ========
+
+ SELECT * [SPECIFIC COLUMNS] FROM TABLE1 RIGHT [OUTER] JOIN TABLE2
+ ON (TABLE1.COMMNCOLUMNAME=TABLE2.COMMONCOLUMNNAME);
+
+ NOTE:
+ =====
+
+ TABLE2 IS RIGHT TABLE.
+
+ EX:
+===
+
+ WRITE A QUERY TO DISPLLAY EMPNO,ENAME,SAL FROM EMP
+ AND DEPTNO,DNAME FROM DEPT , display MATCHED RECORDS FROM
+ BOTH THE TABLES AND NON MATCHED RECORDS FROM EMP TABLE 
+ USING RIGHT OUTER JOIN.
+
+
+SOL:
+====
+
+
+  SELECT E.empno,E.ENAME,E.SAL,D.DEPTNO,D.DNAME FROM
+  DEPT D RIGHT OUTER JOIN EMP E ON (D.DEPTNO=E.DEPTNO);
+
+
+
+ FULL OUTER JOIN:
+ ================
+ THIS JOIN RETRIVES OR FETCH ALL THE MATCHED AND NON-MATCHED
+ RECORDS FROM THE BOTH THE TABLE.
+
+SYNTAX:
+========
+
+SELECT * [SPECIFIC COLUMNS] FROM TABLE1 FULL [OUTER] JOIN TABLE2
+ON (TABLE1.COMMNCOLUMNAME=TABLE2.COMMONCOLUMNNAME);
+
+EX:
+====
+
+WRITE  A QUERY TO DISPLAY ALL THE RCORDS FROM BOTH TABLES
+USING FULL OUTER JOIN.
+
+EX:
+====
+ SELECT E.Empno,E.ENAME,E.SAL,D.DEPTNO,D.DNAME FROM
+ DEPT D FULL OUTER JOIN EMP E ON (D.DEPTNO=E.DEPTNO);
+
+  O/P:17 RECORDS.
+
+
+
+EX:
+===
+
+
+
+WRITE A EQUI JOIN QUERY TO GET DEPTNO,EMPNO,ENAME,SAL FROM EMP
+DEPTNO,DNAME FROM DEPT
+DEPTNO,HISAL FROM SALGRADE JOIN THREE TABLES.
+
+SOL:
+====
+
+SELECT E.EMPNo,E.ENAME,E.EMPNO,E.SAL,D.DEPTNO,D.DNAME,
+S.LOSAL,S.HISAL FROM 
+DEPT D JOIN EMP E ON(D.DEPTNO=E.DEPTNO) JOIN SALGRADE S
+ON (D.DEPTNO=S.DEPTNO);
+
+
+O/P- 22 ROWS:
+
+
+
+
+
+ SELF JOIN:
+ ==========
+
+ A SELF JOIN is  a join of a table itself.
+
+ note:
+ =====
+
+ two table alias name we need to specify in from clause
+ of same table.
+
+
+ ex:
+ ===
+
+ write a self join query to display empolyee name along
+ with his manager names using emp table.
+
+ sol:
+ ====
+ select e.ename,m.ename as manager from emp e,emp m
+ where e.mgr=m.empno;
+
+
+ CROSS JOIN:
+ ===========
+ 
+ THIS PERFORMS CARTIESAN PRODUCT
+
+ EX:
+ ===
+
+ WRITE A QUERY TO PERFORM CROSS JOIN USING DEPT,EMP
+
+ DEPT--5
+ EMP --15
+
+ CROSS JOIN:- 5*15=75 RECORDS.
+
+ SOL:
+ ====
+
+ SELECT E.EMPNO,E.ENAME,D.DEPTNO,D.DNAME FROM 
+ DEPT D CROSS JOIN EMP E;
+
+ 
+
+ or 
+    SELECT E.EMPNO,E.ENAME,D.DEPTNO,D.DNAME FROM
+    DEPT D,EMP E;
+
+
+ NATURAL JOIN:
+ =============
+
+ NATURAL JOIN IS SIMILAR TO INNER JOIN,
+ BUT THE CONDITION IS PERFORMED IMPLICITY BASED ON COLUMN.
+
+ EX:
+ ===   
+
+ SELECT E.ENAME,D.DNAME FROM
+ DEPT D NATURAL JOIN EMP E;
+
+ NOTE:
+ =====
+
+ IN NATURAL JOIN THE COMMON COLUMN NAME BETWEEN  THE TWO TABLE
+ MUST BE SAME. IF NOT IT WILL PERFORM CROSS JOIN
+
+ NATURAL JOIN IS DEPENDENT ON COLUMN NAME .
+
+
+NON-EQUI JOIN:
+==============
+=,!= OTHER THAN THIS OPERATORS
+
+
+1)WRITE A NON-EQUI JOIN QUERY 
+TO GET EMPNO,ENAME,SAL FROM EMP
+GRADE FROM SAL GRADE
+AND DISPLAY SALARIES BASED ON E.SAL COLUMN BETWEEN
+THE RANGE OF LOSAL AND HISAL COLUMNS OF SALGRADE TABLE.
+
+SOL:
+=====
+
+SELECT E.EMPNO,E.ENAME,E.SAL S.GRADE
+FROM EMP E,SALGRADE S WHERE E.SAL BETWEEN LOSAL AND HISAL;
+
+O/P:
+====
+15 ROWS
+
+
+SEQUENCE:
+=========
+
+ A SEQUENCE IS A DATABASE OBJECT WHICH IS USED TO
+ GENERATE INTEGER NUMBER OR UNIQUE NUMBERS.
+
+ A SEQUENCE IS USED FOR PRIMARY KEY COLUMN AUTOMATICALLY TO GENERATE
+ VALUES.
+
+ SYNTAX:
+ =======
+ CREATE SEQUENCE SEQUENCNAME
+ START WITH INTEGERVALUE
+ INCREMENT BY INTEGERVALUE
+ MAXVALUE VALUE
+ MINVALUE VALUE
+ [CACHE/NOCACHE]
+ [CYCLE/NOCYCLE]
+ [ORDER/NOORDER];
+
+
+ PSEUDO COLUMNS:
+ ===============
+
+ nextval -- it will increment the value of sequence
+
+ ex:
+ ===
+
+ sequename.nextval;
+
+ 
+ currval -- it will represent the current sequence value generated.
+ ====
+
+ cache:
+ ======
+
+  by default for every sequence cache size is 20 
+
+   it will keep 20 sequence number is cache .
+
+
+ explicit:
+ =========
+
+ cache size = ceil(maxvalue- minvalue)/incrementvalue;
+
+
+ cycle:
+ ======
+ it will repeat the loop from minvalue to maxvalue.
+  by default cycle is disabled --nocycle
+
+
+
+  ex:
+  === 
+   1) Create  a sequence to generate 1 t0 5  and increment by 1.
+
+    solu:
+    ====
+  
+     create sequence s1
+      start with 1
+     increment by 1
+     minvalue 1
+     maxvalue 5;
+    
+
+  2) create a sequence to generate 100 to 105 ,increment by 1 and start sequence value with 103.
+
+     sol:
+     ----
+     create sequence s2
+     start with 103
+     increment by 1
+     minvalue 100
+     maxvalue 105;
+
+ 
+
+
+
+
+   3)create a sequence which generates integer numbers
+     from 1 to 5 with cache size 4 .
+
+  sol:
+  ====
+
+   create sequence s3
+   minvalue 1
+   maxvalue 5
+   cache 4
+   start with 1
+   increment by 1;
+
+
+   ex:
+   ===
+
+   create a sequence which generates integer numbers
+    from 1 to 5 with cache size 4 with cycle start with 3.
+
+  sol:
+  ====
+
+   create sequence s4
+   minvalue 1
+   maxvalue 5 
+   start with 3
+   increment by 1
+   cache 4
+   cycle ;
+
+ ex:
+ ====
+ create sequence s3 ;
+
+
+note
+----
+minvalue is 1
+maxvalue 10power 27
+
+
+to list all sequences 
+======================
+
+select * from user_sequences;
+
+
+to drop a sequence:
+====================
+
+syntax:
+=======
+
+drop sequence sequencename;
+
+ex:
+===
+
+drop sequence s3;
+
+
+ ex:
+ ===
+
+ 1)create a sequence with minvalue 1 and max value 10
+ increment by 2 start with 2 and cycle,cache 4
+
+ 2)create a table emp_sq with three colums empno,ename,sal.
+
+ 3)insert the records into emp_sq table using above sequence
+   for empno column and ename,sal  using address operator.
+
+
+
+
+to alter a sequence:
+====================
+
+syntax:
+=======
+
+alter sequence sequencename
+[increment by ]
+[minvalue]
+[maxvalue]
+[cache]
+[cycle]
+
+note:
+=====
+Except start with value
+
+
+
+ SYNONYMS:
+ =========
+
+  SYNONYM IS A ALIAS NAME FOR DATABASE OBJECTS(TABLE,SEQUENCE,...).
+
+  SYNONYMM IS ALERNATIVE NAME FOR DATABASE OBJECTS(table,procedure,function..).
+
+  THERE ARE TWO TYPES OF SYNONYMS
+
+  1)PRIVATE SYNONYM
+  2)PUBLIC SYNONYM
+
+  PRIVATE SYNONYM:
+  ================
+
+  A SYNONYM WHICH IS AVAILABLE FOR THE USER WHO IS CREATED.
+
+  SYNTAX:
+  ========
+  CREATE SYNONYM SYNONYMNAME FOR DATABASE OBJECT.
+
+  EX:
+  ===
+
+  CREATE A SYNONYM FOR TABLE DEPT;
+
+  SOL:
+  ====
+
+  CREATE SYNONYM DEPT_SYN FOR DEPT;
+
+ NOTE:
+ -----
+
+ WHEN TRY TO CREATE  WE WILL GET AN ERROR
+ INSUFFICIENT PRIVILEGES.
+ 
+ 1) CONNECT AS SYSBA
+ 2) GRANT CREATE  SYNONYM TO LTI;
+
+
+ to list all synonyms:
+ ----------------------
+
+ select * from user_synonyms;
+
+
+ display the table records using  synonymname:
+ =============================================
+
+ select * from emp_syn_11 ;
+
+
+ to drop a synonym:
+ ==================
+
+  syntax:
+  ========
+
+ drop synonym synonymname;
+
+
+ PUBLIC SYNONYM:
+ ===============
+
+ 1) FIRST CREATE A SYNONYM  IN SYSDBA USER USING PUBLIC KEYWORD
+
+ SYNTAX:
+ ========
+
+ CREATE PUBLIC SYNONYM FOR DATABASE OBJECT.
+
+ ex:
+ ===
+
+ create public synonym  SALGRADE_SY for LTI.SALGRAGE;
+
+
+ 2) this synonym can be accessed by all the users.
+
+   from sysda:-
+
+     connect /as sysdba;
+    grant select on synonym to user;
+
+    Ex:1
+   ======
+     connect /as sysdba;
+    grant select on SALGRADE_SY to Lti1;
+
+
+
+
+ to drop public synonym:
+ =======================
+
+  drop public synonym synonyname;
+
+
+ views:
+ ======
+
+ A VIEW IS A LOGICAL REPRESENTATION OF TABLE DATA.
+
+ A VIEW DOES NOT CONTAIN PHYSICAL STORAGE.
+
+ A VIEW IS VIRTUAL TABLE.
+
+ WHY VIEW?
+
+ 1)SECURITY
+ 2)PERFORMANCE
+
+
+ TYPES OF VIEW:
+ ==============
+
+ 1)SIMPLE VIEW
+ 2)COMPLEX VIEW
+
+
+
+ SIMPLE VIEW:
+ ============
+ 1) A VIEW IS CREATED BASED ON SINGLE TABLE.
+
+ 2)IN SIMPLE VIEW DOESNOT CONTAIN FUNCTIONS OR GROUP BY CLAUSES.
+
+ 3)WE CAN PERFORM DML OPERATION ON SIMPLE VIEW.
+
+
+ SYNTAX:
+ ========
+  CREATE OR REPLACE VIEW  VIEWNAME  AS SELECT * [SPECIFIC COLUMNS]
+                                   FROM TABLENAME;
+
+ EX:
+ ===
+
+ CREATE A VIEW ON EMP TABLE IT CONTAINS THREE COLUMNS
+ EMPNO,ENAME,SAL
+
+ SOL:
+ ====
+
+ CREATE  VIEW EMP_V1 AS SELECT EMPNO,ENAME,SAL FROM EMP;
+
+
+TO DISPLAY THE VIEW OUT PUT:
+=============================
+
+SELECT * FROM VIEWNAME;
+
+ex:
+====
+
+select * from emp_v1;
+
+
+to list all the views:
+========================
+
+syntax:
+--------
+
+select * from user_views;
+
+or 
+ 
+select View_name,Text from user_views;
+
+
+to drop a view:
+===============
+
+drop view viewname;
+
+
+ COMPLEX VIEW:
+ =============
+
+ A VIEW IS CREATED BASED ON MORE THAN ONE TABLE.
+
+ A COMPLEX VIEW CAN CONTAIN FUNCTION OR GROUP BY CLAUSE.
+
+ A DML OPERATION PERFROMED ON COMPLEX VIEW INDIRECTLY.
+
+ INDIRECTLY:
+ ===========
+ WE CAN UPDATE A COMPLEX VIEW USING INSTEAD OF TRIGGERS.
+
+
+  SYNTAX:
+  =======
+
+  CREATE OR REPLACE VIEW VIEWNAME AS SELECT * FROM TWOTABLES;
+
+ EX:
+ ===
+
+ CREATE COMPLEX VIEW TO STORE EQUI JOIN OUTPUT OF DEPT AND EMP TABLE.
+
+ SOL:
+ ====
+ CREATE OR REPLACE VIEW EMP_DEPT_EQ AS
+     SELECT E.EMPNO,E.ENAME,E.SAL,D.DEPTNO,D.DNAME FROM 
+         DEPT D JOIN EMP E ON (D.DEPTNO=E.DEPTNO);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STRING FUNCTIONS:
+==================
+
+this functions are used to perform  manipulation
+on character data.
+
+1)upper -- upper('string')-it will convert the lowercase into uppercase
+
+2)lower --lower('string') -it wil convert the given string into lowecase
+ 
+3)initcap--initcap('string') -it will display the given string as first letter in capital
+
+4)length --length('string')-it will retrun no of characters count.
+
+5)lpad: 
+========
+this function is used to add the character at the end of left 
+
+syntax:
+=======
+
+lpad('string',length,chars);
+
+ex:
+====
+write a query to add some characters to a given string;
+
+ex:
+====
+
+select  lpad('raju',11,'welcome') from  dual;
+
+6)rpad
+=======
+select  rpad('raju',11,'welcome') from  dual;
+
+
+7)ltrim
+=========
+
+this function will remove the character from left side of 
+a given string
+
+syntax:
+========
+
+ltrim(string,chars);
+
+ex:
+===
+
+write a query to remove the characters from left side a given string
+
+sol:
+====
+
+select ltrim('welcome','we') from dual;
+
+
+8)rtrim
+========
+this function will remove the characters from right side of a
+given string.
+
+syntax:-- rtrim('string',chars)
+ex:
+===
+
+select rtrim('welcome to raju','raju') from dual;
+
+
+9)trim
+--------
+
+this will remove the characters from left and right side end of a
+given.
+
+syntax:
+=======
+trim(unused from 'string');
+
+ex:
+===
+
+select trim( 'i' from 'indiani') from dual;
+
+
+10)substr
+---------
+
+this function will display a part of  string
+from a given strin.
+
+syntax:
+=======
+
+substr('string',startposition,no of character);
+
+ex:
+---
+select  substr('welcome',4,2) from dual;
+
+
+11)replace
+==========
+
+this function used to replace the characters
+
+syntax:
+=======
+
+replace('string','oldchars','newchars');
+
+ex:
+===
+
+select replace('chaitanya','ta','ka') from dual;
+
+
+
+1)write a query to display string in upper case  from dual;
+
+ex:
+====
+
+select upper('welcome to ibm') from dual;
+
+2)write a query to display given string in lowercase from dual;
+
+ex:
+===
+
+selet lower('WELCOME TO IBM')  from dual;
+
+3) write a query to dispaly given string in initcap from dual;
+
+select initcap('welcome') from dual;
+
+
+EXERCISES:
+===========
+
+1) WRITE A QUERY TO DISPLAY ENAME COLUMN IN LOWER CASE FROM EMP;
+
+2) WRITE A QUERY TO DISPLAY ALL ENAME START CHARACTER IN CAPITAL.
+     FROM EMP;
+
+3)WRITE A QUERY TO REPLACE ENAME=SCOTT   WITH TIGER  FROM EMP;
+
+4)WRITE A QUERY TO DISPLAY SUBSTR  OF ALL ENAME  FIRST THREE
+   CHARACTES FROM EMP;
+
+
+
+
+
+
+
+
+
+
+
+
+NUMBER FUNCTIONS:
+=================
+
+ABS -- IT WILL DISPLAY ABSLOUTE VALUE INTEGER.
+
+SYNTAX:
+=======
+ABS(NUM)
+
+EX:
+===
+
+SELECT ABS(5),ABS(-5),ABS(NULL) FROM DUAL;
+
+OLP:--  5,5,
+
+SQRT:
+=====
+IT WILL RETRUN SQRT ROOT VALUE OF A NUMBER.
+
+SYNTAX:
+========
+
+SQRT(NUM);
+
+EX:
+===
+
+SELECT SQRT(4),SQRT(9),SQRT(5),SQRT(NULL) FROM DUAL;
+
+OLP:-- 2,3,2.36,
+
+MOD:
+====
+
+THIS FUNCTION RETRUN REMAINDER.
+
+SYNTAX
+======
+
+MOD(VALUE,DIVISON);
+
+EX:
+===
+SELECT MOD(4,2),MOD(5,2) FROM DUAL;
+
+O/P:- 0,1
+
+NVL:
+=====
+
+THIS FUNCTION IS USED TO REPLACE THE NULL VALUES.
+
+SYNTAX:
+-------
+NVL(NULL,REPLACE VALUE)
+
+EX:
+===
+WRITE A QUERY TO DISPLAY COMM COLUMN FROM EMP
+AN REPLACE NULL VALUES WITH 0;
+
+SOL:
+====
+
+SELECT NVL(COMM,0) FROM EMP;
+
+
+CEIL:
+======
+
+THIS FUNCTION ROUND THE VALUE TO HIGHEST POSSIBLE VALUE
+
+SYNTAX:
+========
+
+CEIL(NUM);
+
+EX:
+===
+
+SELECT CEIL(4.5),CEIL(5),CEIL(4.2) FROM DUAL;
+
+OLP:- 5,5,5
+
+FLOOR:
+======
+THIS FUNCTION ROUND THE VALUE TO Lowest POSSIBLE VALUE
+
+SYNTAX:
+-------
+FLOOR(NUM);
+
+EX:
+===
+
+SELECT FLOOR(4.5),FLOOR(4.2),FLOOR(4.7) FROM DUAL;
+
+O/P:- 4,4,4,
+
+
+LOGINCAL OPERATORS:
+===================
+
+AND 
+OR
+
+CONCATENATION OPERATIORS:
+==========================
+
+|| --CONCATENATION 
+
+EX:
+===
+
+SELECT 'THE NAME OF EMPLOYEE IS '||ENAME  FROM EMP;
+
+
+IS NULL OPERATOR:
+=================
+THIS RETRUN THE VALUES BASED ON SEARCH OF NULL VALUES.
+
+EX:
+===
+
+WRITE A QUERY TO DISPLAY THE ALL RECORD FROM EMP
+WHERE COMM IS NULL;
+
+SOL:
+====
+
+SELECT * FROM EMP WHERE COMM IS NULL;
+dinesh.malwade@lntinfotech.comdinesh.malwade@lntinfotech.comdinesh.malwade@lntinfotech.com
+
+
+
+
+TO_DATE():
+===========
+THIS FUNCTION CONVERT CHAR OR VARCHAR INTO DATE FORMAT.
+
+SYNTAX:
+=======
+
+TO_DATE(CHAR,[FORMAT]);
+
+EX:
+----
+
+SELECT TO_DATE('12232018','MMDDYYYY') FROM DUAL;
+
+SYSDATE:--
+========
+IT WILL DISPLAY CURRENT SYSDATE.
+
+EX:
+===
+
+SELECT SYSDATE FROM DUAL;
+
+MONTHS_BETWEEN:
+==============
+
+SYNTAX:
+=======
+
+MONTHS_BETWEEN(STARTDATE,ENDDATE);
+
+
+
+
+SET OPERATORS:
+==============
+
+UNION
+UNIONALL
+INTERSECT
+MINUS
+
+UNION:
+======
+THIS OPERATEOR UNION RETRIVES THE OUTPUT OF TWO QUERIES 
+AND IT REMOVES DUPLICATE RECORDS.
+
+CREATE TABLE DEPT_U1 AS SELECT * FROM DEPT;
+CREATE TABLE DEPT_U2 AS SELECT * FROM DEPT;
+
+INSERT SOME RECORDS INTO ABOVE TWO TABLES.
+
+EX:
+====
+
+SELECT * FROM DEPT_U1
+UNION
+SELECT * FROM DEPT_U2;
+
+---IT WILL REMOVE DUPLICATES RECORDS.
+
+UNION ALL:
+==========
+
+SELECT * FROM DEPT_U1
+UNION ALL
+SELECT * FROM DEPT_U2;
+
+NOTE:
+=====
+IT WILL DISPLAY ALL THE DUPLICATE RECORDS FROM TWO TABLES
+
+
+INTESECT:
+==========
+SELECT * FROM DEPT_U1
+INTERSECT
+SELECT * FROM DEPT_U2;
+
+NOTE:
+====
+
+IT WILL DISPLAY MATCHED RECORDS FROM TWO TABLES.
+
+
+MINUS:
+=====
+SELECT * FROM DEPT_U1
+MINUS
+SELECT * FROM DEPT_U2;
+
+NOTE:
+=====
+IT WILL DISPLAY NON-MATCHED RECORDS FROM FIRST TABLE(DEPT_U1).
+
+
+
+  ALL
+ ----
+
+ SELECT * FROM EMP WHERE SAL>ALL(1000,2000,3000);
+
+                   OR
+
+ SELECT  * FROM EMP WHERE SAL>1000 AND SAL>2000 AND SAL>3000;
+
+ ANY
+ ----
+
+ SELECT * FROM EMP WHERE SAL>ANY(1000,2000,3000);
+
+                     OR
+
+ SELECT * FROM EMP WHERE SAL>1000 OR SAL >2000 OR SAL>3000;
+ 
+ 
+
+
+
+
+  SUBQUERIES:
+  ===========
+
+  A SUBQUERY IS A SELECT STATEMENT WHICH EMBEDDED IN ANOTHER
+  SELECT STATEMENT.
+            
+
+  THERE ARE DIFFERENT TYPES OF SUB-QUERIES.
+
+  1)SINGLE ROW SUB-QUERY
+  2)MULTIPLE ROW SUB-QUERY
+
+       
+
+
+ 1)SINGLE ROW SUBQUERY:
+ ======================
+
+ A SINGLE ROW SUBQUERY IS A SUBQUERY WHICH RETURN ONE VALUE.
+
+ EX:
+ ===
+
+ SELECT * FROM EMP WHERE SAL >
+ (SELECT SAL FROM EMP WHERE EMPO=7566);
+
+   
+
+
+
+
+ 2)MULTIPLE ROW SUB QUERY:
+ =========================
+
+  A SUBQUERY WHICH RETURNS MORE THAN ONE VALUE,IN SUCH CASE
+   WE SHOULD USE THE OPERATORS LIKE
+   ALL,ANY,IN OR NOT IN..ETC
+
+ EX:
+ ====
+
+ SELECT * FROM EMP WHERE SAL > 
+             ANY(SELECT SAL FROM EMP WHERE DEPTNO=20);
+
+
+ INTERNALLY SUBSQUERY CONVERTED INTO
+
+ SELECT * FROM EMP WHERE SAL > Any(800,2975,3000,1100,3000);
+
+
+EX:
+===
+
+SELECT * FROM EMP WHERE SAL > 
+             ALL(SELECT SAL FROM EMP WHERE DEPTNO=20);
+
+INTERNALLY SUBQUERY CONVERTED INTO
+
+SELECT * FROM EMP WHERE SAL> ALL(800,2975,3000,1100,3000);
+
+
+NESTED SUBQUERIES:
+=================
+
+ A SUBQUERY IS EMBEDDED IN ANOTHER SUBQUERY IS CALLED 
+       NESTED SUBQUERY.
+
+ EX:
+ ---
+
+ WRITE A SUBQUERY TO GET SECOND MAXIMUM SALARY FROM EMP TABLE.
+
+ EX:
+ ===
+
+ SELECT * FROM EMP WHERE SAL=
+ (SELECT MAX(SAL) FROM EMP WHERE SAL<(SELECT MAX(SAL) FROM EMP));
+
+
+  INTERNALYY THE QUERY CONVERTED INTO
+
+1) SELECT * FROM EMP WHERE SAL=
+(SELECT MAX(SAL) FROM EMP WHERE SAL< (5000));
+
+2)SELECT * FROM EMP WHERE SAL=3000;
+
+OR
+---
+
+ SELECT DISTINCT SAL FROM EMP WHERE SAL=
+ (SELECT MAX(SAL) FROM EMP WHERE SAL<(SELECT MAX(SAL) FROM EMP));
+
+
+ CORRELATED SUBQUERY:
+ ====================
+
+ Correlated sub query is used for row by row processing. 
+ The sub query is executed for each row of the main query.
+
+
+ A CORRELATED SUBQUERY IS A SUBQUERY WHICH 
+ IS BASED ON PARENT(OUTER) TABLE RELATION. --based on alias name
+
+
+ EX:
+ ====
+
+   SELECT E.EMPNO,E.ENAME,E.SAL FROM EMP E
+     WHERE SAL IN (SELECT SAL FROM EMP WHERE E.deptno=10) And SAl=(SELECT SAL FROM EMP WHERE E.EMPNO=7566);
+
+
+EXECUTION:
+==========
+
+FIRST OUTER QUERY EXECUTED FIRST FOLLWED BY SUBSQUERY AND
+OUTER QUERY.
+
+
+SELECT CLAUSE:
+===============
+
+IN SELECT CLAUSE WE NEED TO SPECIFY THE SUBQUERY WHICH RETURN
+ONE VALUE.
+
+
+EX:
+===
+
+SELECT EMPNO,ENAME,(SELECT MAX(SAL) FROM EMP) FROM EMP;
+
+
+
+
+RANK:
+======
+
+RANK() OVER (ORDER BY SAL DESC);
+
+EX:
+===
+
+WRITE  A QUERY TO SPECIFY THE RANKS FOR EMPLOYEES
+BASED ON SALARY.
+
+SOL:
+====
+
+SELECT EMPNO,ENAME,SAL,RANK() OVER (ORDER BY SAL DESC) AS RNK 
+FROM EMP;
+
+DENSERANK:
+======
+
+DENSE_RANK() OVER (ORDER BY SAL DESC);
+
+EX:
+===
+
+WRITE  A QUERY TO SPECIFY THE RANKS FOR EMPLOYEES
+BASED ON SALARY.
+
+SOL:
+====
+
+SELECT EMPNO,ENAME,SAL,DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK 
+FROM EMP;
+
+DIFFERNECE BETWEEN RANK AND DENSE_RANK:
+=======================================
+
+RANK -- RANK FUNCTION WILL SPECIFY THE RANKS BASED ON GAP.
+DENSE_RANK -- IT WILL SPECIFY THE RANK WITH OUT GAP.
+
+
+Form clause or in line view:
+============================
+EX:
+====
+
+WRITE A QUERY TO DISPLAY SECOND HIGHEST SALARY BASED ON
+DENSE_RANK AND SUBQUERY.
+
+SOL:
+====
+
+SELECT DISTINCT SAL FROM (SELECT EMPNO,ENAME,SAL,DENSE_RANK() OVER 
+            (ORDER BY SAL DESC) AS DRNK FROM EMP) WHERE DRNK=2;
+
+
+
+
+
+
+
+
+
+
+
+
+INDEXES:
+========
+
+index isa database object ,index is a pointer which
+locates the phsyical data of a table.
+
+we can create index explicity on columns,
+so that we can increase the performance the sql statement query.
+
+when we create index(on columns)internally on column
+the data will sort in ascending order and 
+assign rowid(psedudo column)
+
+THERE ARE DIFFERENT TYPES OF INDEXES:
+======================================
+1)SIMPLE INDEX
+2)COMPLEX INDEX
+3)UNIQUE INDEX
+
+
+
+SIMPLE INDEX:
+=============
+
+SIMPLE INDEX IS A INDEX WHICH IS CREATED BASED ON SINGLE COLUMN.
+
+SYNTAX:
+=======
+
+CREATE  INDEX INDEXNAME ON  TABLENAME(COLUMNANME);
+
+
+
+TO DISPLAY THE EXECUTION FOR EVERY SQL QUERY:
+=============================================
+
+SET AUTOTRACE ON EXPLAIN;
+
+
+EX:
+===
+
+CREATE INDEX ON SAL COLUMN  AND WRITE A QUERY TO DISPLAY
+RECORD BASED ON SAL COLUMN ALSO DISPLAY EXECTION PLAIN
+WHITHER IT PERFROM TABLE SCAN OR INDX SCAN.
+
+SOL:
+===
+
+CREATE INDEX IN_SAL ON EMP(SAL);
+
+
+
+NOTE:
+======
+WE NEED TO CREATE INDEX ON COLUMNS,THAT COLUMNS
+FREQUENTLY USED IN WHERE CLAUSE.
+
+WHEN CREATE INDEX THE TABLE WILL BE SCANNED BASED ON INDEX
+ RANGE SCAN
+
+
+to list all indexes:
+====================
+ select index_name,index_type from user_indexes where TABLE_NAME='EMP';
+
+
+
+
+COMPLEX:
+========
+
+A COMPLEX INDEX IS CREATED BASED ON MORE THAN ONE COLUMN.
+
+
+SYNTAX:
+========
+
+CREATE INDEX INDEXNAME ON TABLENAME(COL1,COL2...,COL32);
+
+EX
+===
+
+CREATE A INDEX ON ENAME COLUMN AND DEPTNO COLUMN OF EMP TABLE
+THEN WRITE A QUERY TO DISPLAY EMPNO,ENAME,SAL 
+USING ENAME AND DEPT IN WHERE CLAUSE.
+
+SOL:
+====
+
+CREATE INDEX IN_SAL_EN ON EMP(ENAME,DEPTNO);
+
+
+SELECT * FROM EMP WHERE ENAME='BLAKE' AND DEPTNO=30;
+
+
+UNIQUE INDEX:
+=============
+
+A UNIQUE INDEX IS INDEX WHICH IS CREATED ON A COLUMN
+WHICH DOESNOT CONTAIN DUPLICATE VALUES.
+
+NOTE:
+=====
+
+WHEN YOU CREATE UNIQUE INDEX INTERNALLY 
+UNIQUE CONTSTRAINT IS CREATED ON THE THAT COLUMN.
+
+WHEN WE CREATE UNIQUE CONSTRAINT ON COLUMN
+INTERNALLY UNIQUE INDEX WILL BE CREATED.
+
+
+SYNTAX:
+=======
+
+CREATE UNIQUE INDEX INDEXNAME ON TABLENAME(COLUMN);
+
+EX:
+===
+
+1)CREATE A TABLE EMP_UNIDX WHICH CONTAIN THREE COLLUMNS
+EMNO,ENAME,SAL 
+
+2) INSERT THREE RECORDS INTO A TABLE WITH OUT DULPICATES.
+
+SOL:
+=====
+
+CREATE UNIQUE INDEX IN_UQ ON EMP_UNIDX(EMPNO);
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ORDER BY CLAUSE
+GROUP BY CLAUSE
+HAVING CLAUSE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
